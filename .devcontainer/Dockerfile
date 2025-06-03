@@ -12,6 +12,6 @@ WORKDIR /azp
 RUN curl -LsS https://vstsagentpackage.azureedge.net/agent/3.220.2/vsts-agent-linux-x64-3.220.2.tar.gz | tar -xz
 
 # Copy entrypoint script
-COPY start-agent.sh .
+COPY .devcontainer/start-agent.sh .
 
 RUN chmod +x start-agent.sh
