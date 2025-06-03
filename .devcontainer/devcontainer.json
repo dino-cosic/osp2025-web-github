@@ -1,0 +1,20 @@
+{
+  "name": "SampleApi Codespace with Azure Pipelines Agent",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "context": "..",
+  "remoteUser": "vscode",
+  "containerEnv": {
+    "AZP_URL": "https://dev.azure.com/dcosic1",
+    "AZP_TOKEN": "2PziuihVwQBGglU9ETT7PAb5LyaAXEMsdFMDSTzHssNavtSyIqQHJQQJ99BFACAAAAAOvNKqAAASAZDO4Ffb",
+    "AZP_POOL": "CodespacesPool",
+    "AZP_AGENT_NAME": "CodespacesAgent"
+  },
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "ms-dotnettools.csharp"
+  ]
+}
