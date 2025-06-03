@@ -1,5 +1,5 @@
 # Base image with .NET 8 SDK preinstalled
-FROM mcr.microsoft.com/vscode/devcontainers/dotnet:0-8.0
+FROM mcr.microsoft.com/devcontainers/dotnet:8.0
 
 # Install prerequisites for Azure Pipelines agent
 RUN apt-get update && apt-get install -y \
