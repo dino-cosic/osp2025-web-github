@@ -9,7 +9,7 @@
     "AZP_URL": "https://dev.azure.com/dinocosic95",
     "AZP_TOKEN": "5GUfxbFV3Y3Ph6PV5gOl23id1qgL2u1IIAezyjpLvQJkgprvwxlsJQQJ99BFACAAAAAAAAAAAAASAZDO2Q71",
     "AZP_POOL": "CodespacesPool",
-    "AZP_AGENT_NAME": "CodespacesAgent"
+    "AZP_AGENT_NAME": "CodespacesAgent-${localEnv:CODESPACE_NAME}"
   },
   "postCreateCommand": "/azp/start-agent.sh",
   "settings": {
