@@ -1,0 +1,67 @@
+trigger:
+  branches:
+    include:
+      - main
+
+name: '$(Build.DefinitionName)_$(Date:yyyyMMdd)$(Rev:.r)'
+
+variables:
+  buildConfiguration: 'Release'
+  outputDir: '$(Build.ArtifactStagingDirectory)/publish'
+
+pool:
+  name: 'CodespacesPool'  # Use the self-hosted agent pool
+
+stages:
+  - stage: Build
+    displayName: 'Build and Test'
+    jobs:
+      - job: BuildJob
+        displayName: 'Restore, Build, Test, and Publish'
+        steps:
+          - task: UseDotNet@2
+            displayName: 'Use .NET SDK'
+            inputs:
+              packageType: 'sdk'
+              version: '8.x'
+
+          - script: dotnet restore
+            displayName: 'Restore Dependencies'
+            continueOnError: false
+
+          - script: dotnet build --configuration $(buildConfiguration) --no-restore
+            displayName: 'Build Solution'
+            continueOnError: false
+
+          - script: dotnet test --configuration $(buildConfiguration) --no-build --verbosity normal
+            displayName: 'Run Unit Tests'
+            continueOnError: false
+
+          - script: dotnet publish --configuration $(buildConfiguration) --output $(outputDir) --no-build
+            displayName: 'Publish App'
+            continueOnError: false
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Artifact'
+            inputs:
+              pathToPublish: '$(outputDir)'
+              artifactName: 'drop'
+              publishLocation: 'Container'
+
+  - stage: Deploy
+    displayName: 'Deploy to Codespaces Environment'
+    dependsOn: Build
+    condition: succeeded()
+    jobs:
+      - job: DeployJob
+        displayName: 'Deploy to Codespaces'
+        steps:
+          - download: current
+            artifact: drop
+
+          - script: |
+              echo "Deploying application to Codespaces environment..."
+              mkdir -p ~/deployed/OSP2025
+              cp -r $(Pipeline.Workspace)/drop/* ~/deployed/OSP2025
+              echo "Deployment complete. Files copied to ~/deployed/OSP2025"
+            displayName: 'Copy Published Files'
