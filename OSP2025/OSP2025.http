@@ -1,0 +1,6 @@
+@OSP2025_HostAddress = http://localhost:5107
+
+GET {{OSP2025_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
