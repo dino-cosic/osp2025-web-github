@@ -7,7 +7,7 @@
   "remoteUser": "vscode",
   "containerEnv": {
     "AZP_URL": "https://dev.azure.com/dinocosic95",
-    "AZP_TOKEN": "BeLtCPCiRp5HxydvAWKbfBN0EsCFby9XMH2p9DIy5a8LYfrr1TNZJQQJ99BFACAAAAAAAAAAAAASAZDO3dLD",
+    "AZP_TOKEN": "5GUfxbFV3Y3Ph6PV5gOl23id1qgL2u1IIAezyjpLvQJkgprvwxlsJQQJ99BFACAAAAAAAAAAAAASAZDO2Q71",
     "AZP_POOL": "CodespacesPool",
     "AZP_AGENT_NAME": "CodespacesAgent"
   },

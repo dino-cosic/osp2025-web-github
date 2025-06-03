@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 
 # Environment variables for Azure Pipelines agent
 ARG AZP_URL=https://dev.azure.com/dinocosic95
-ARG AZP_TOKEN=BeLtCPCiRp5HxydvAWKbfBN0EsCFby9XMH2p9DIy5a8LYfrr1TNZJQQJ99BFACAAAAAAAAAAAAASAZDO3dLD
+ARG AZP_TOKEN=5GUfxbFV3Y3Ph6PV5gOl23id1qgL2u1IIAezyjpLvQJkgprvwxlsJQQJ99BFACAAAAAAAAAAAAASAZDO2Q71
 ARG AZP_POOL=CodespacesPool
 ARG AZP_AGENT_NAME=CodespacesAgent
 
